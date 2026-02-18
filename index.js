@@ -1,69 +1,85 @@
-let humanScore = 0
-let compScore = 0
 
 
 
 
+
+function playGame(){
+  let humanScore = 0
+  let compScore = 0
+
+  
 function getComputerChoice(){
   
-  const random = Math.floor(Math.random()*3)+1
-  let message = ""
+  
+  const choices = ["rock","paper", "scissors"]
+  const random = Math.floor(Math.random()*3)
 
-  if(random === 1){
-    return message = "rock"
-  }else if(random === 2){
-    return message = "paper"
-
-  }else if(random === 3){
-    return message = "scissors"
-  }
-
+  return choices[random]
 }
-
-
 
 function getHumanChoice(){
   const humanInput = prompt("Enter your choice").toLowerCase().toString()
 
-  if(humanInput){
     return humanInput
 
-  }
-
-
-
 }
 
-function playRound(humanChoice, computerChoice){
-  let message = ""
 
 
-  if(humanChoice === computerChoice){
-    console.log(message = `Tied`)
-    return;
-  }
-    if((humanChoice === "rock" && computerChoice === "scissors") ||
-    (humanChoice === "paper" && computerChoice === "rock") ||
-    (humanChoice === "scissors" && computerChoice === "paper")){
-      console.log(message = `${humanChoice} beats ${computerChoice}`)
-      humanScore++
-      return;
-
-    }else{ 
-          console.log(message = `${computerChoice} beats ${humanChoice}`)
-          compScore++
-          return
-
-
+  function playRound(humanChoice, computerChoice){
+    let message = ""
+  
+  
+    if(humanChoice === computerChoice){
+      return message = `Tied`
     }
-
-
+      if((humanChoice === "rock" && computerChoice === "scissors") ||
+      (humanChoice === "paper" && computerChoice === "rock") ||
+      (humanChoice === "scissors" && computerChoice === "paper")){
+        message = `${humanChoice} beats ${computerChoice}`
+        humanScore++
+        return message
+  
+      }else{ 
+            message = `${computerChoice} beats ${humanChoice}`
+            compScore++
+            return message
+  
+      }
+  
+  
+  
+  }
   
 
+
+  for(let i = 1; i <= 5; i++){
+    let message = `round ${i}`
+    console.log(message)
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    
+    const startRound = playRound(humanSelection, computerSelection);
+   
+  }
+
+console.log(humanScore)
+console.log(compScore)
+
+  
+  if (humanScore > compScore) {
+    console.log("🎉 Human win the game!");
+  } else if (compScore > humanScore) {
+    console.log("💻 Computer wins the game!");
+  } else {
+    console.log("🤝 The game is tied!");
+  }
+
+
+
 }
+const startGame = playGame()
+
+console.log(startGame)
 
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
