@@ -1,8 +1,4 @@
 
-
-
-
-
 function playGame(){
   let humanScore = 0
   let compScore = 0
@@ -36,18 +32,17 @@ function getHumanChoice(){
       if((humanChoice === "rock" && computerChoice === "scissors") ||
       (humanChoice === "paper" && computerChoice === "rock") ||
       (humanChoice === "scissors" && computerChoice === "paper")){
-        message = `${humanChoice} beats ${computerChoice}`
+        message = `${humanChoice} beats ${computerChoice} human win!`
         humanScore++
+
         return message
   
       }else{ 
-            message = `${computerChoice} beats ${humanChoice}`
+            message = `${computerChoice} beats ${humanChoice} computer win!`
             compScore++
-            return message
+             return message
   
-      }
-  
-  
+     }
   
   }
   
@@ -60,11 +55,12 @@ function getHumanChoice(){
     const computerSelection = getComputerChoice();
     
     const startRound = playRound(humanSelection, computerSelection);
+    console.log(startRound)
    
   }
 
-console.log(humanScore)
-console.log(compScore)
+console.log(`Human Score: ${humanScore}`)
+console.log(`Computer Score: ${compScore} `)
 
   
   if (humanScore > compScore) {
@@ -78,8 +74,8 @@ console.log(compScore)
 
 
 }
+
 const startGame = playGame()
 
-console.log(startGame)
 
 
